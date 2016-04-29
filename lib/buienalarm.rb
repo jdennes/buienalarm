@@ -28,7 +28,7 @@ module Buienalarm
       start = Time.at(data["start"]).to_datetime
       result = []
       data["precip"].each do |level|
-        rainfall = (10 ** ((level - 109) / 32)).to_f
+        rainfall = (10 ** ((level - 109.0) / 32.0)).to_f
         result << {
           :time => start,
           :rainfall => rainfall,
