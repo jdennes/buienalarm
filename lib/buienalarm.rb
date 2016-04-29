@@ -14,9 +14,9 @@ module Buienalarm
     # point in time, five minutes apart over the next two hours. Each hash
     # contains the following:
     #   :time - A DateTime representing the point in time
-    #   :precip - A Float representing the rainfall in mm per hour
+    #   :rainfall - A Float representing the rainfall in mm per hour
     #   :level - The defined level ("none", "light", "moderate", or "heavy")
-    def self.scrape(location="")
+    def self.scrape(location)
       # Details of how to scrape and use the data are documented in:
       # https://gist.github.com/jdennes/61322ea392df9120396eb6651f64e566
 
@@ -28,30 +28,30 @@ module Buienalarm
       start = Time.at(data["start"]).to_datetime
       result = []
       data["precip"].each do |level|
-        precip = (10 ** ((level - 109) / 32)).to_f
+        rainfall = (10 ** ((level - 109) / 32)).to_f
         result << {
           :time => start,
-          :precip => precip,
-          :level => self.calculate_level(precip, data)
+          :rainfall => rainfall,
+          :level => self.calculate_level(rainfall, data)
         }
         start += Rational(5, (60 * 24)) # Increment start by five minutes
       end
       result
     end
 
-    def self.calculate_level(precip, data)
+    def self.calculate_level(rainfall, data)
       light = data["levels"]["light"]
       moderate = data["levels"]["moderate"]
       heavy = data["levels"]["heavy"]
 
       case
-      when precip.round(2) == 0.00
+      when rainfall.round(2) == 0.00
         "none"
-      when precip <= light
+      when rainfall <= light
         "light"
-      when precip <= moderate
+      when rainfall <= moderate
         "moderate"
-      when precip > moderate
+      when rainfall > moderate
         "heavy"
       else
         "unknown"

@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-# script/scrape: Scrape http://www.buienalarm.nl/ for projected precipitation
+# script/scrape: Scrape http://www.buienalarm.nl/ for projected rainfall
 #
 # Usage: script/scrape <location>
 #
@@ -16,7 +16,7 @@ begin
   result = Buienalarm::Scraper.scrape(location)
   puts "Projected rainfall for the next two hours in #{location}:\n\n"
   result.each do |entry|
-    puts "#{entry[:time].strftime("%H:%M")} - %.2fmm/hour (#{entry[:level]})" % entry[:precip]
+    puts "#{entry[:time].strftime("%H:%M")} - %.2fmm/hour (#{entry[:level]})" % entry[:rainfall]
   end
 rescue Exception => e
   puts e
