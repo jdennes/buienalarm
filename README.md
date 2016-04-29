@@ -6,7 +6,7 @@ Currently just provides the following interface for scraping projected rainfall 
 
 ```rb
 >> result = Buienalarm::Scraper.scrape("rotterdam")
-=> [{:time=>#<DateTime: 2016-04-29T12:50:00+02:00 ((2457508j,39000s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T12:55:00+02:00 ((2457508j,39300s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T13:00:00+02:00 ((2457508j,39600s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T13:05:00+02:00 ((2457508j,39900s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T13:10:00+02:00 ((2457508j,40200s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T13:15:00+02:00 ((2457508j,40500s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T13:20:00+02:00 ((2457508j,40800s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T13:25:00+02:00 ((2457508j,41100s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T13:30:00+02:00 ((2457508j,41400s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T13:35:00+02:00 ((2457508j,41700s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T13:40:00+02:00 ((2457508j,42000s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T13:45:00+02:00 ((2457508j,42300s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T13:50:00+02:00 ((2457508j,42600s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T13:55:00+02:00 ((2457508j,42900s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T14:00:00+02:00 ((2457508j,43200s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T14:05:00+02:00 ((2457508j,43500s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T14:10:00+02:00 ((2457508j,43800s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T14:15:00+02:00 ((2457508j,44100s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T14:20:00+02:00 ((2457508j,44400s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T14:25:00+02:00 ((2457508j,44700s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T14:30:00+02:00 ((2457508j,45000s,0n),+7200s,2299161j)>, :rainfall=>0.0001, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T14:35:00+02:00 ((2457508j,45300s,0n),+7200s,2299161j)>, :rainfall=>0.01, :level=>"light"}, {:time=>#<DateTime: 2016-04-29T14:40:00+02:00 ((2457508j,45600s,0n),+7200s,2299161j)>, :rainfall=>0.01, :level=>"light"}, {:time=>#<DateTime: 2016-04-29T14:45:00+02:00 ((2457508j,45900s,0n),+7200s,2299161j)>, :rainfall=>0.01, :level=>"light"}, {:time=>#<DateTime: 2016-04-29T14:50:00+02:00 ((2457508j,46200s,0n),+7200s,2299161j)>, :rainfall=>0.01, :level=>"light"}]
+=> [{:time=>#<DateTime: 2016-04-29T16:35:00+02:00 ((2457508j,52500s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T16:40:00+02:00 ((2457508j,52800s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T16:45:00+02:00 ((2457508j,53100s,0n),+7200s,2299161j)>, :rainfall=>0.07498942093324558, :level=>"light"}, {:time=>#<DateTime: 2016-04-29T16:50:00+02:00 ((2457508j,53400s,0n),+7200s,2299161j)>, :rainfall=>0.27384196342643613, :level=>"moderate"}, {:time=>#<DateTime: 2016-04-29T16:55:00+02:00 ((2457508j,53700s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T17:00:00+02:00 ((2457508j,54000s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T17:05:00+02:00 ((2457508j,54300s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T17:10:00+02:00 ((2457508j,54600s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T17:15:00+02:00 ((2457508j,54900s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T17:20:00+02:00 ((2457508j,55200s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T17:25:00+02:00 ((2457508j,55500s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T17:30:00+02:00 ((2457508j,55800s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T17:35:00+02:00 ((2457508j,56100s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T17:40:00+02:00 ((2457508j,56400s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T17:45:00+02:00 ((2457508j,56700s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T17:50:00+02:00 ((2457508j,57000s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T17:55:00+02:00 ((2457508j,57300s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T18:00:00+02:00 ((2457508j,57600s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T18:05:00+02:00 ((2457508j,57900s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T18:10:00+02:00 ((2457508j,58200s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T18:15:00+02:00 ((2457508j,58500s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T18:20:00+02:00 ((2457508j,58800s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T18:25:00+02:00 ((2457508j,59100s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T18:30:00+02:00 ((2457508j,59400s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}, {:time=>#<DateTime: 2016-04-29T18:35:00+02:00 ((2457508j,59700s,0n),+7200s,2299161j)>, :rainfall=>0.0003924189758484536, :level=>"none"}]
 ```
 
 Also provides `script/scrape` to test this from the command line:
@@ -17,29 +17,29 @@ $ script/scrape rotterdam
 
 Projected rainfall for the next two hours in rotterdam:
 
-12:55 - 0.00mm/hour (none)
-13:00 - 0.00mm/hour (none)
-13:05 - 0.00mm/hour (none)
-13:10 - 0.00mm/hour (none)
-13:15 - 0.00mm/hour (none)
-13:20 - 0.00mm/hour (none)
-13:25 - 0.00mm/hour (none)
-13:30 - 0.00mm/hour (none)
-13:35 - 0.00mm/hour (none)
-13:40 - 0.01mm/hour (light)
-13:45 - 0.00mm/hour (none)
-13:50 - 0.00mm/hour (none)
-13:55 - 0.00mm/hour (none)
-14:00 - 0.00mm/hour (none)
-14:05 - 0.00mm/hour (none)
-14:10 - 0.00mm/hour (none)
-14:15 - 0.00mm/hour (none)
-14:20 - 0.00mm/hour (none)
-14:25 - 0.00mm/hour (none)
-14:30 - 0.00mm/hour (none)
-14:35 - 0.01mm/hour (light)
-14:40 - 0.00mm/hour (none)
-14:45 - 0.01mm/hour (light)
-14:50 - 0.00mm/hour (none)
-14:55 - 0.00mm/hour (none)
+16:35 - 0.00mm/hour (none)
+16:40 - 0.00mm/hour (none)
+16:45 - 0.07mm/hour (light)
+16:50 - 0.27mm/hour (moderate)
+16:55 - 0.00mm/hour (none)
+17:00 - 0.00mm/hour (none)
+17:05 - 0.00mm/hour (none)
+17:10 - 0.00mm/hour (none)
+17:15 - 0.00mm/hour (none)
+17:20 - 0.00mm/hour (none)
+17:25 - 0.00mm/hour (none)
+17:30 - 0.00mm/hour (none)
+17:35 - 0.00mm/hour (none)
+17:40 - 0.00mm/hour (none)
+17:45 - 0.00mm/hour (none)
+17:50 - 0.00mm/hour (none)
+17:55 - 0.00mm/hour (none)
+18:00 - 0.00mm/hour (none)
+18:05 - 0.00mm/hour (none)
+18:10 - 0.00mm/hour (none)
+18:15 - 0.00mm/hour (none)
+18:20 - 0.00mm/hour (none)
+18:25 - 0.00mm/hour (none)
+18:30 - 0.00mm/hour (none)
+18:35 - 0.00mm/hour (none)
 ```
