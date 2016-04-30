@@ -24,4 +24,24 @@ class TestBuienalarmScraper < Minitest::Test
     assert entry[:level].is_a? String
   end
 
+  def test_that_calculate_level_works
+    levels = {
+      "light"    => 0.25,
+      "moderate" => 1.0,
+      "heavy"    => 2.5,
+    }
+
+    level = Buienalarm::Scraper.calculate_level(0.001, levels)
+    assert_equal "none", level
+
+    level = Buienalarm::Scraper.calculate_level(0.25, levels)
+    assert_equal "light", level
+
+    level = Buienalarm::Scraper.calculate_level(0.9, levels)
+    assert_equal "moderate", level
+
+    level = Buienalarm::Scraper.calculate_level(2.5, levels)
+    assert_equal "heavy", level
+  end
+
 end

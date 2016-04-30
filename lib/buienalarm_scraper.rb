@@ -30,9 +30,9 @@ module Buienalarm
       data["precip"].each do |level|
         rainfall = 10 ** ((level - 109.0) / 32.0)
         result << {
-          :time => start,
+          :time     => start,
           :rainfall => rainfall,
-          :level => self.calculate_level(rainfall, data["levels"])
+          :level    => self.calculate_level(rainfall, data["levels"])
         }
         start += Rational(5, (60 * 24)) # Increment start by five minutes
       end
