@@ -12,4 +12,13 @@ class TestBuienalarmScraper < Minitest::Test
       error.message
   end
 
+  def test_that_scrape_returns_valid_result
+    location = "rotterdam"
+    result = Buienalarm::Scraper.scrape(location)
+    assert result.is_a? Array
+
+    # TODO: Add more assertions
+
+  end
+
 end
