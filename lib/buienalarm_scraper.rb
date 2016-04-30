@@ -8,7 +8,7 @@ module Buienalarm
     # Scrape http://www.buienalarm.nl/location/<location> for the projected
     # rainfall in the next two hours.
     #
-    # location - The location to query. Example: "rotterdam"
+    # location - A String representing the location to query. e.g. "rotterdam"
     #
     # Returns an Array of Hash. Each hash represents the projected rainfall at a
     # point in time, five minutes apart over the next two hours. Each hash
@@ -32,19 +32,27 @@ module Buienalarm
         result << {
           :time => start,
           :rainfall => rainfall,
-          :level => self.calculate_level(rainfall, data)
+          :level => self.calculate_level(rainfall, data["levels"])
         }
         start += Rational(5, (60 * 24)) # Increment start by five minutes
       end
       result
     end
 
-    private
-
-    def self.calculate_level(rainfall, data)
-      light = data["levels"]["light"]
-      moderate = data["levels"]["moderate"]
-      heavy = data["levels"]["heavy"]
+    # Calculate the "level" of rainfall in human terms, given the levels
+    # defined by Buienalarm.nl.
+    #
+    # rainfall - A float representing rainfall for a period.
+    # levels   - A hash containing entries for the rainfall levels returned by
+    #            Buienalarm.nl. Contains the following keys: "light",
+    #            "moderate", and "heavy".
+    #
+    # Returns a String representing the level defined by Buienalarm.nl for the
+    # rainfall value.
+    def self.calculate_level(rainfall, levels)
+      light = levels["light"]
+      moderate = levels["moderate"]
+      heavy = levels["heavy"]
 
       case
       when rainfall.round(2) == 0.00
