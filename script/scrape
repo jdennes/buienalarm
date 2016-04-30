@@ -6,7 +6,7 @@
 #
 # Example: script/scrape rotterdam
 
-require_relative "../lib/buienalarm"
+require_relative "../lib/buienalarm_scraper"
 
 location = ARGV.shift or abort "Usage: script/scrape <location>"
 
