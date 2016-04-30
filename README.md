@@ -43,3 +43,15 @@ Projected rainfall for the next two hours in rotterdam:
 18:30 - 0.00mm/hour (none)
 18:35 - 0.00mm/hour (none)
 ```
+
+To work on this locally:
+
+```
+script/bootstrap
+```
+
+To run the tests:
+
+```
+script/test [test/test_file.rb]
+```
