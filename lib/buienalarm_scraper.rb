@@ -39,6 +39,8 @@ module Buienalarm
       result
     end
 
+    private
+
     def self.calculate_level(rainfall, data)
       light = data["levels"]["light"]
       moderate = data["levels"]["moderate"]
