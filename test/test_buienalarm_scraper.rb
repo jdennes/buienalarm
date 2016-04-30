@@ -1,7 +1,7 @@
 require "minitest/autorun"
 require_relative "../lib/buienalarm_scraper"
 
-class TestBuienAlarmScraper < Minitest::Test
+class TestBuienalarmScraper < Minitest::Test
 
   def test_that_scrape_raises_an_error_when_no_data_is_found
     location = "not-a-valid-location"
