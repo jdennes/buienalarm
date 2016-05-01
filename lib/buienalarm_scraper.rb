@@ -1,3 +1,4 @@
+require "uri"
 require "faraday"
 require "faraday_middleware"
 require "json"
@@ -24,7 +25,7 @@ module Buienalarm
         faraday.use      FaradayMiddleware::FollowRedirects, limit: 3
         faraday.adapter  Faraday.default_adapter
       end
-      response = conn.get "/location/#{location}"
+      response = conn.get "/location/#{URI.escape(location)}"
       page = response.body
 
       /^.*locationdata\['forecast'\] = (?<json>\{.*\});/i =~ page
