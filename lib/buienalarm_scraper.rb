@@ -29,21 +29,28 @@ module Buienalarm
       page = response.body
 
       /^.*locationdata\['forecast'\] = (?<json>\{.*\});/i =~ page
-      raise "No projected rainfall data for '#{location}' found" unless json
+      raise "No projected rainfall data found for '#{location}'" unless json
+
+      /^.*locationdata\['locality'\] = '(?<locality>.*)';/i =~ page
+      raise "No locality found for '#{location}'" unless locality
 
       data = JSON.parse(json)
       start = Time.at(data["start"]).to_datetime
-      result = []
+      projected_rainfall = []
       data["precip"].each do |level|
         rainfall = 10 ** ((level - 109.0) / 32.0)
-        result << {
+        projected_rainfall << {
           :time     => start,
           :rainfall => rainfall,
           :level    => self.calculate_level(rainfall, data["levels"])
         }
         start += Rational(5, (60 * 24)) # Increment start by five minutes
       end
-      result
+
+      {
+        :locality           => locality,
+        :projected_rainfall => projected_rainfall
+      }
     end
 
     # Calculate the "level" of rainfall in human terms, given the levels
