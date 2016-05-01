@@ -24,6 +24,30 @@ class TestBuienalarmScraper < Minitest::Test
     assert entry[:level].is_a? String
   end
 
+  def test_that_scrape_follows_redirects
+    location = "Rotterdam"
+    result = Buienalarm::Scraper.scrape(location)
+    # Requests to /location/Rotterdam should 302 to /location/rotterdam
+    assert result.is_a? Array
+    assert_equal 25, result.size
+    entry = result.first
+    assert entry[:time].is_a? DateTime
+    assert entry[:rainfall].is_a? Float
+    assert entry[:level].is_a? String
+  end
+
+  def test_that_scrape_handles_locations_including_spaces
+    location = "Den Haag"
+    result = Buienalarm::Scraper.scrape(location)
+    # Should request /location/Den%20Haag which should 302 to /location/denhaag
+    assert result.is_a? Array
+    assert_equal 25, result.size
+    entry = result.first
+    assert entry[:time].is_a? DateTime
+    assert entry[:rainfall].is_a? Float
+    assert entry[:level].is_a? String
+  end
+
   def test_that_calculate_level_works
     levels = {
       "light"    => 0.25,
