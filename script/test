@@ -7,8 +7,6 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-script/bootstrap
-
 echo "===> Running tests..."
 
 if [ -n "$1" ]; then
