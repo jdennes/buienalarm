@@ -22,8 +22,8 @@ module Buienalarm
       # Details of how to scrape and use the data are documented in:
       # https://gist.github.com/jdennes/61322ea392df9120396eb6651f64e566
       conn = Faraday.new(:url => "http://www.buienalarm.nl") do |faraday|
-        faraday.use      FaradayMiddleware::FollowRedirects, limit: 3
-        faraday.adapter  Faraday.default_adapter
+        faraday.use     FaradayMiddleware::FollowRedirects, limit: 3
+        faraday.adapter Faraday.default_adapter
       end
       response = conn.get "/location/#{URI.escape(location)}"
       page = response.body
