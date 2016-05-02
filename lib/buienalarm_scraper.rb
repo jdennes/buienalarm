@@ -12,12 +12,17 @@ module Buienalarm
     #
     # location - A String representing the location to query. e.g. "rotterdam"
     #
-    # Returns an Array of Hash. Each hash represents the projected rainfall at a
-    # point in time, five minutes apart over the next two hours. Each hash
-    # contains the following:
-    #   :time - A DateTime representing the point in time
-    #   :rainfall - A Float representing the rainfall in mm per hour
-    #   :level - The defined level ("none", "light", "moderate", or "heavy")
+    # Returns a Hash containing the following:
+    #   :location - A String representing the actual location found for the
+    #               location provided as input.
+    #   :rainfall - An Array of Hashes. Each hash represents the projected
+    #               rainfall at a point in time, five minutes apart over the
+    #               next two hours. Each hash contains the following:
+    #                 :time     - A DateTime representing the point in time.
+    #                 :rainfall - A Float representing the rainfall in mm
+    #                             per hour.
+    #                 :level    - The defined level ("none", "light",
+    #                             "moderate", or "heavy").
     def self.scrape(location)
       # Details of how to scrape and use the data are documented in:
       # https://gist.github.com/jdennes/61322ea392df9120396eb6651f64e566
@@ -32,32 +37,32 @@ module Buienalarm
       raise "No projected rainfall data found for '#{location}'" unless json
 
       /^.*locationdata\['locality'\] = '(?<locality>.*)';/i =~ page
-      raise "No locality found for '#{location}'" unless locality
+      raise "No location found for '#{location}'" unless locality
 
       data = JSON.parse(json)
       start = Time.at(data["start"]).to_datetime
-      projected_rainfall = []
+      rainfall = []
       data["precip"].each do |level|
-        rainfall = 10 ** ((level - 109.0) / 32.0)
-        projected_rainfall << {
+        rf = 10 ** ((level - 109.0) / 32.0)
+        rainfall << {
           :time     => start,
-          :rainfall => rainfall,
-          :level    => self.calculate_level(rainfall, data["levels"])
+          :rainfall => rf,
+          :level    => self.calculate_level(rf, data["levels"])
         }
         start += Rational(5, (60 * 24)) # Increment start by five minutes
       end
 
       {
-        :locality           => locality,
-        :projected_rainfall => projected_rainfall
+        :location => locality,
+        :rainfall => rainfall
       }
     end
 
     # Calculate the "level" of rainfall in human terms, given the levels
     # defined by Buienalarm.nl.
     #
-    # rainfall - A float representing rainfall for a period.
-    # levels   - A hash containing entries for the rainfall levels returned by
+    # rainfall - A Float representing rainfall in mm per hour.
+    # levels   - A Hash containing entries for the rainfall levels returned by
     #            Buienalarm.nl. Contains the following keys: "light",
     #            "moderate", and "heavy".
     #

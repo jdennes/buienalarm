@@ -14,8 +14,8 @@ puts "===> Scraping Buienalarm.nl...\n\n"
 
 begin
   result = Buienalarm::Scraper.scrape(location)
-  puts "Projected rainfall for the next two hours in #{result[:locality]}:\n\n"
-  result[:projected_rainfall].each do |entry|
+  puts "Projected rainfall for the next two hours in #{result[:location]}:\n\n"
+  result[:rainfall].each do |entry|
     puts "#{entry[:time].strftime("%H:%M")} - %.2fmm/hour (#{entry[:level]})" % entry[:rainfall]
   end
 rescue Exception => e
