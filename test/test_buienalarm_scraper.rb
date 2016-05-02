@@ -9,28 +9,32 @@ class TestBuienalarmScraper < Minitest::Test
     error = assert_raises RuntimeError do
       Buienalarm::Scraper.scrape(location)
     end
-    assert_equal "No projected rainfall data for '#{location}' found",
+    assert_equal "No projected rainfall data found for '#{location}'",
       error.message
   end
 
   def test_that_scrape_returns_valid_result
     location = "rotterdam"
     result = Buienalarm::Scraper.scrape(location)
-    assert result.is_a? Array
-    assert_equal 25, result.size
-    entry = result.first
+    assert result.is_a? Hash
+    assert_equal "Rotterdam", result[:location]
+    assert result[:rainfall].is_a? Array
+    assert_equal 25, result[:rainfall].size
+    entry = result[:rainfall].first
     assert entry[:time].is_a? DateTime
     assert entry[:rainfall].is_a? Float
     assert entry[:level].is_a? String
   end
 
   def test_that_scrape_follows_redirects
-    location = "Rotterdam"
+    location = "ROTTERDAM"
     result = Buienalarm::Scraper.scrape(location)
-    # Requests to /location/Rotterdam should 302 to /location/rotterdam
-    assert result.is_a? Array
-    assert_equal 25, result.size
-    entry = result.first
+    # Requests to /location/ROTTERDAM should 302 to /location/rotterdam
+    assert result.is_a? Hash
+    assert_equal "Rotterdam", result[:location]
+    assert result[:rainfall].is_a? Array
+    assert_equal 25, result[:rainfall].size
+    entry = result[:rainfall].first
     assert entry[:time].is_a? DateTime
     assert entry[:rainfall].is_a? Float
     assert entry[:level].is_a? String
@@ -40,9 +44,11 @@ class TestBuienalarmScraper < Minitest::Test
     location = "Den Haag"
     result = Buienalarm::Scraper.scrape(location)
     # Should request /location/Den%20Haag which should 302 to /location/denhaag
-    assert result.is_a? Array
-    assert_equal 25, result.size
-    entry = result.first
+    assert result.is_a? Hash
+    assert_equal "Den Haag", result[:location]
+    assert result[:rainfall].is_a? Array
+    assert_equal 25, result[:rainfall].size
+    entry = result[:rainfall].first
     assert entry[:time].is_a? DateTime
     assert entry[:rainfall].is_a? Float
     assert entry[:level].is_a? String
